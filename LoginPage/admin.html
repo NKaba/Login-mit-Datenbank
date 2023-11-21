@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>admin</title>
+</head>
+<body>
+  <button type="button" id="abmelden">Abmelden</button>
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+
+   // Your web app's Firebase configuration
+   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+   const firebaseConfig = {
+apiKey: "AIzaSyAh56EtL2mQDoN9_KXhQ9fNF_hqLDW2Fes",
+authDomain: "login-321e5.firebaseapp.com",
+projectId: "login-321e5",
+storageBucket: "login-321e5.appspot.com",
+messagingSenderId: "616409502822",
+appId: "1:616409502822:web:8dd386ab331543191389a7",
+measurementId: "G-L4QBDWKLNY"
+};
+
+  
+const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth();
+    
+    const signOutBtn = document.getElementById("abmelden");
+    signOutBtn.addEventListener("click", e => {
+      auth.signOut().then(() => {
+        // Benutzer erfolgreich abgemeldet
+        console.log("User signed out");
+        window.location.href = "login.html"; // Weiterleitung zur Anmeldeseite
+      }).catch((error) => {
+        console.log(error);
+      });
+    });
+</script>
+</html>
